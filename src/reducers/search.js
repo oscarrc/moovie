@@ -2,6 +2,8 @@ const INITIAL_STATE = {
     searchQuery: "",
     page: 1,
     usedSearch: false,
+    loading: false,
+    more: true,
     results: []
 }
 
@@ -15,6 +17,7 @@ export const search = (state = INITIAL_STATE, action) => {
         case 'DO_SEARCH':
             return {
                 ...state,
+                loading: false,
                 results: action.results,
                 usedSearch: true
             }
@@ -22,7 +25,19 @@ export const search = (state = INITIAL_STATE, action) => {
             return {
                 ...state,
                 page: action.page,
+                loading: false,
                 results: state.results.concat(action.results)
+            }
+        case 'IS_LOADING':
+                return {
+                    ...state,
+                    loading: true
+                }
+        case 'NO_MORE':
+            return {
+                ...state,
+                loading: false,
+                more: false
             }
         case 'CLEAR_SEARCH':
             return INITIAL_STATE

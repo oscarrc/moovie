@@ -14,6 +14,8 @@ const MapStateToProps = state => {
         searchQuery: state.searchQuery,
         usedSearch: state.usedSearch,
         results: state.results,
+        loading: state.loading,
+        more: state.more,
         page: state.page
     }
 }
@@ -35,6 +37,10 @@ const MapDispatchToProps = dispatch => {
             }
         },
         doSearch: (query, page) => {
+            dispatch({
+                type: "IS_LOADING"
+            })
+
             fetchSearch(query, page).then( results => dispatch({
                 type: "DO_SEARCH",
                 results: results.Search || []
@@ -43,11 +49,23 @@ const MapDispatchToProps = dispatch => {
         nextPage: (query, page) => {
             page++
 
-            fetchSearch(query, page).then( results => dispatch({
-                type: "NEXT_PAGE",
-                results: results,
-                page: page
-            }))
+            dispatch({
+                type: "IS_LOADING"
+            })
+
+            fetchSearch(query, page).then( results => {
+                if(results.Response === "True"){
+                    dispatch({
+                        type: "NEXT_PAGE",
+                        results: results.Search,
+                        page: page
+                    })
+                }else{
+                    dispatch({
+                        type: "NO_MORE"
+                    })
+                }
+            })
         },
     }
 }
