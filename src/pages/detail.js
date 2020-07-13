@@ -6,7 +6,7 @@ import { DetailHeader } from '../components/detailHeader';
 import { DetailInfo } from '../components/detailInfo';
 import { Footer } from '../components/footer';
 
-const API_KEY = "a67275ce";
+const API_KEY = process.env.REACT_APP_OMDB;
 
 export class Detail extends Component {
     static propTypes = {
@@ -23,7 +23,7 @@ export class Detail extends Component {
     state = { movie: {}, color: "" }
 
     _fetchMovie = ({ id }) => {
-        fetch(`http://www.omdbapi.com/?apikey=${API_KEY}&i=${id}&plot=full`)
+        fetch(`//www.omdbapi.com/?apikey=${API_KEY}&i=${id}&plot=full`)
             .then( res => res.json() )
             .then( movie => {
                 this.setState({ movie })

@@ -1,3 +1,9 @@
+# MOOVIE
+
+[Moovie](https://moovie.surge.sh) is a simple PWA I've made in order to learn the basics of React. It does nothing but fetch movie info from OMDb.
+
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts

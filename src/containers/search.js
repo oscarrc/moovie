@@ -2,10 +2,10 @@ import { connect } from 'react-redux';
 import { SearchForm } from '../components/searchForm';
 import { SearchResults } from '../components/searchResults';
 
-const OMDB_KEY = "a67275ce";
+const API_KEY = process.env.REACT_APP_OMDB;
 
 const fetchSearch = (searchQuery, page) => (
-    fetch(`http://www.omdbapi.com/?apikey=${OMDB_KEY}&s=${searchQuery}&type=movie&page=${page}`)
+    fetch(`//www.omdbapi.com/?apikey=${API_KEY}&s=${searchQuery}&type=movie&page=${page}`)
             .then( res => ( res.json() ) )
 )
 
