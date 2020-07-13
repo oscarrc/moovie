@@ -6,7 +6,7 @@ const API_KEY = process.env.REACT_APP_OMDB;
 
 const fetchSearch = (searchQuery, page) => (
     fetch(`//www.omdbapi.com/?apikey=${API_KEY}&s=${searchQuery}&type=movie&page=${page}`)
-            .then( res => ( res.json() ) )
+        .then( res => ( res.json() ) )
 )
 
 const MapStateToProps = state => {
