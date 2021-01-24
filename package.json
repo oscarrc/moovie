@@ -2,6 +2,10 @@
   "name": "search-movies",
   "version": "0.1.0",
   "private": true,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/oscarrc/moovie"
+  },
   "dependencies": {
     "@mdi/font": "^5.3.45",
     "@testing-library/jest-dom": "^4.2.4",
@@ -21,7 +25,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build && cp build/index.html build/200.html",
+    "deploy": "surge build moovie.oscarrc.me"
   },
   "eslintConfig": {
     "extends": "react-app"
